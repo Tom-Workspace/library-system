@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div align="center">
 
-## Getting Started
+  # 👨‍💻 Eng. Ahmed
+  
+  [![Telegram](https://img.shields.io/badge/Telegram-Contact%20Me-blue?style=for-the-badge&logo=telegram)](https://t.me/BE_PY)
 
-First, run the development server:
+  ---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+  # 📚 Smart Library ERP System
+  ### A Full-Stack Enterprise Resource Planning System for Modern Libraries
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+  ![Next.js](https://img.shields.io/badge/Next.js-14-black?style=flat-square&logo=next.js)
+  ![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-38B2AC?style=flat-square&logo=tailwind-css)
+  ![SQLite](https://img.shields.io/badge/SQLite-Database-003B57?style=flat-square&logo=sqlite)
+  ![Status](https://img.shields.io/badge/Status-Production%20Ready-success?style=flat-square)
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+</div>
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🚀 Overview | نبذة عن المشروع
 
-To learn more about Next.js, take a look at the following resources:
+**Smart Library ERP** is a comprehensive management solution designed to bridge the gap between physical inventory and digital administration. It features a hybrid database architecture capable of running on **Linux (via SQLite)** and **Windows (via MS Access)** seamlessly.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The system acts as a central command center for librarians, handling everything from book sales (POS) and borrowing cycles to staff payroll and financial analytics.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## ✨ Key Features | المميزات الرئيسية
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 📊 1. Command Center (Dashboard)
+- **Real-time Analytics:** Visual charts for monthly revenue and asset value.
+- **Financial Insights:** Tracks Average Order Value (AOV) and total revenue.
+- **Activity Feed:** Live timeline of sales and borrowing actions.
+- **Inventory Health:** Visual indicators for stock levels.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 🛒 2. Point of Sale (POS)
+- **Smart Cart System:** Add/remove items with dynamic stock validation.
+- **Live Receipt:** Real-time calculation of totals.
+- **Barcode Support:** Ready for barcode scanner integration.
+- **Employee Tracking:** Assigns every sale to a specific cashier for auditing.
+
+### 🔄 3. Circulation System (Borrowing)
+- **Ticket-Style UI:** Visual representation of loan status.
+- **Overdue Detector:** Automatically flags books that exceeded the 14-day limit.
+- **One-Click Return:** Streamlined check-in process that updates inventory instantly.
+
+### 👥 4. HR & Staff Management
+- **Profile Cards:** Modern ID-card style profiles for employees.
+- **Payroll Analytics:** Calculates total monthly payroll and average salaries.
+- **Role Management:** Distinguishes between Managers, Librarians, and Security.
+
+### ✒️ 5. Authors Hall of Fame
+- **Bio Truncation:** Smart display for long author biographies.
+- **Linked Works:** View all books associated with a specific author in a modal.
+
+---
+
+## 🛠️ Tech Stack | التقنيات المستخدمة
+
+| Component | Technology | Description |
+| :--- | :--- | :--- |
+| **Frontend** | Next.js 14 (App Router) | Server-side rendering & Client components. |
+| **Styling** | Tailwind CSS | Utility-first CSS framework for glassmorphism design. |
+| **Database** | SQLite / MS Access | Hybrid engine using adapter pattern. |
+| **Backend** | Next.js API Routes | Serverless functions handling CRUD operations. |
+| **Icons** | React Icons | Fa & Md icons for visual enhancements. |
+
+---
+
+## 📸 Screenshots
+
+<div align="center">
+  <img src="https://via.placeholder.com/1200x600/0f172a/ffffff?text=Smart+Library+Dashboard+Preview" alt="Dashboard Screenshot" width="100%" />
+</div>
+
+---
+
+## ⚡ Installation & Setup
+
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/your-username/library-erp-system.git](https://github.com/your-username/library-erp-system.git)
+   cd library-erp-system

@@ -1,65 +1,76 @@
-import Image from "next/image";
+import getExecutor from '@/lib/db';
+import DashboardHelper from '@/components/DashboardHelper';
 
-export default function Home() {
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+async function getDashboardData() {
+  const executeQuery = await getExecutor();
+  
+  const counts = await executeQuery(`
+    SELECT 
+      (SELECT COUNT(*) FROM Books) as booksCount,
+      (SELECT COUNT(*) FROM Members) as membersCount,
+      (SELECT COUNT(*) FROM Staff) as staffCount,
+      (SELECT COUNT(*) FROM Borrows WHERE Status = 'Active') as activeLoans
+  `);
+
+  const finances = await executeQuery(`
+    SELECT 
+      (SELECT SUM(AmountPaid) FROM Sales) as totalRevenue,
+      (SELECT SUM(Price * StockAmount) FROM Books) as inventoryValue,
+      (SELECT COUNT(*) FROM Sales) as totalSalesCount
+  `);
+
+  const monthlyRevenue = await executeQuery(`
+    SELECT substr(SaleDate, 1, 7) as Month, SUM(AmountPaid) as Revenue
+    FROM Sales
+    GROUP BY Month
+    ORDER BY Month DESC
+    LIMIT 6
+  `);
+
+  const categoryStats = await executeQuery(`
+    SELECT Books.Category, COUNT(Sales.ID) as SoldCount, SUM(Sales.AmountPaid) as TotalValue
+    FROM Sales
+    JOIN Books ON Sales.BookID = Books.ID
+    GROUP BY Books.Category
+    ORDER BY TotalValue DESC
+    LIMIT 4
+  `);
+
+  const recentActivities = await executeQuery(`
+    SELECT 'Sale' as Type, CustomerName as User, BookTitle as Item, SaleDate as Date, AmountPaid as Value 
+    FROM (
+        SELECT Sales.CustomerName, Books.Title as BookTitle, Sales.SaleDate, Sales.AmountPaid 
+        FROM Sales JOIN Books ON Sales.BookID = Books.ID ORDER BY Sales.ID DESC LIMIT 4
+    )
+    UNION ALL
+    SELECT 'Borrow' as Type, MemberName as User, BookTitle as Item, BorrowDate as Date, 0 as Value 
+    FROM (
+        SELECT Members.Name as MemberName, Books.Title as BookTitle, Borrows.BorrowDate 
+        FROM Borrows JOIN Books ON Borrows.BookID = Books.ID JOIN Members ON Borrows.MemberID = Members.ID 
+        WHERE Status = 'Active' ORDER BY Borrows.ID DESC LIMIT 4
+    )
+  `);
+
+  return {
+    stats: {
+      books: counts[0]?.booksCount || 0,
+      members: counts[0]?.membersCount || 0,
+      staff: counts[0]?.staffCount || 0,
+      activeLoans: counts[0]?.activeLoans || 0,
+      
+      revenue: finances[0]?.totalRevenue || 0,
+      inventoryValue: finances[0]?.inventoryValue || 0,
+      totalSalesCount: finances[0]?.totalSalesCount || 0,
+      
+      avgOrderValue: finances[0]?.totalSalesCount > 0 ? (finances[0]?.totalRevenue / finances[0]?.totalSalesCount) : 0,
+    },
+    chartData: monthlyRevenue.reverse(),
+    categoryData: categoryStats,
+    activities: recentActivities
+  };
+}
+
+export default async function Home() {
+  const data = await getDashboardData();
+  return <DashboardHelper data={data} />;
 }
