@@ -18,55 +18,55 @@
 
 ---
 
-## 🚀 Overview 
+## 🚀 Overview
 
-**Smart Library ERP** is a comprehensive management solution designed to bridge the gap between physical inventory and digital administration. It features a hybrid database architecture capable of running on **Linux (via SQLite)** and **Windows (via MS Access)** seamlessly.
+**Smart Library ERP** is a comprehensive management solution designed to bridge the gap between physical inventory and digital administration. It features a hybrid database architecture capable of running on **Linux (via SQLite)** and **Windows (via MS Access)** seamlessly
 
-The system acts as a central command center for librarians, handling everything from book sales (POS) and borrowing cycles to staff payroll and financial analytics.
+The system acts as a central command center for librarians, handling everything from book sales (POS) and borrowing cycles to staff payroll and financial analytics
 
 ---
 
-## ✨ Key Features 
+## ✨ Key Features
 
 ### 📊 1. Command Center (Dashboard)
-- **Real-time Analytics:** Visual charts for monthly revenue and asset value.
-- **Financial Insights:** Tracks Average Order Value (AOV) and total revenue.
-- **Activity Feed:** Live timeline of sales and borrowing actions.
-- **Inventory Health:** Visual indicators for stock levels.
+- **Real-time Analytics:** Visual charts for monthly revenue and asset value
+- **Financial Insights:** Tracks Average Order Value (AOV) and total revenue
+- **Activity Feed:** Live timeline of sales and borrowing actions
+- **Inventory Health:** Visual indicators for stock levels
 
 ### 🛒 2. Point of Sale (POS)
-- **Smart Cart System:** Add/remove items with dynamic stock validation.
-- **Live Receipt:** Real-time calculation of totals.
-- **Barcode Support:** Ready for barcode scanner integration.
-- **Employee Tracking:** Assigns every sale to a specific cashier for auditing.
+- **Smart Cart System:** Add/remove items with dynamic stock validation
+- **Live Receipt:** Real-time calculation of totals
+- **Barcode Support:** Ready for barcode scanner integration
+- **Employee Tracking:** Assigns every sale to a specific cashier for auditing
 
 ### 🔄 3. Circulation System (Borrowing)
-- **Ticket-Style UI:** Visual representation of loan status.
-- **Overdue Detector:** Automatically flags books that exceeded the 14-day limit.
-- **One-Click Return:** Streamlined check-in process that updates inventory instantly.
+- **Ticket-Style UI:** Visual representation of loan status
+- **Overdue Detector:** Automatically flags books that exceeded the 14-day limit
+- **One-Click Return:** Streamlined check-in process that updates inventory instantly
 
 ### 👥 4. HR & Staff Management
-- **Profile Cards:** Modern ID-card style profiles for employees.
-- **Payroll Analytics:** Calculates total monthly payroll and average salaries.
-- **Role Management:** Distinguishes between Managers, Librarians, and Security.
+- **Profile Cards:** Modern ID-card style profiles for employees
+- **Payroll Analytics:** Calculates total monthly payroll and average salaries
+- **Role Management:** Distinguishes between Managers, Librarians, and Security
 
 ### ✒️ 5. Authors Hall of Fame
-- **Bio Truncation:** Smart display for long author biographies.
-- **Linked Works:** View all books associated with a specific author in a modal.
+- **Bio Truncation:** Smart display for long author biographies
+- **Linked Works:** View all books associated with a specific author in a modal
 
 ---
 
-## 🛠️ Tech Stack 
+## 🛠️ Tech Stack
 
 | Component | Technology | Description |
 | :--- | :--- | :--- |
-| **Frontend** | Next.js 14 (App Router) | Server-side rendering & Client components. |
-| **Styling** | Tailwind CSS | Utility-first CSS framework for glassmorphism design. |
-| **Database** | SQLite / MS Access | Hybrid engine using adapter pattern. |
-| **Backend** | Next.js API Routes | Serverless functions handling CRUD operations. |
-| **Icons** | React Icons | Fa & Md icons for visual enhancements. |
+| **Frontend** | Next.js 14 (App Router) | Server-side rendering & Client components |
+| **Styling** | Tailwind CSS | Utility-first CSS framework for glassmorphism design |
+| **Database** | SQLite / MS Access | Hybrid engine using adapter pattern |
+| **Backend** | Next.js API Routes | Serverless functions handling CRUD operations |
+| **Icons** | React Icons | Fa & Md icons for visual enhancements |
 
-
+---
 
 ## ⚡ Installation & Setup
 
