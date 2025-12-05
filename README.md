@@ -18,7 +18,7 @@
 
 ---
 
-## 🚀 Overview | نبذة عن المشروع
+## 🚀 Overview 
 
 **Smart Library ERP** is a comprehensive management solution designed to bridge the gap between physical inventory and digital administration. It features a hybrid database architecture capable of running on **Linux (via SQLite)** and **Windows (via MS Access)** seamlessly.
 
@@ -26,7 +26,7 @@ The system acts as a central command center for librarians, handling everything 
 
 ---
 
-## ✨ Key Features | المميزات الرئيسية
+## ✨ Key Features 
 
 ### 📊 1. Command Center (Dashboard)
 - **Real-time Analytics:** Visual charts for monthly revenue and asset value.
@@ -56,7 +56,7 @@ The system acts as a central command center for librarians, handling everything 
 
 ---
 
-## 🛠️ Tech Stack | التقنيات المستخدمة
+## 🛠️ Tech Stack 
 
 | Component | Technology | Description |
 | :--- | :--- | :--- |
@@ -66,15 +66,7 @@ The system acts as a central command center for librarians, handling everything 
 | **Backend** | Next.js API Routes | Serverless functions handling CRUD operations. |
 | **Icons** | React Icons | Fa & Md icons for visual enhancements. |
 
----
 
-## 📸 Screenshots
-
-<div align="center">
-  <img src="https://via.placeholder.com/1200x600/0f172a/ffffff?text=Smart+Library+Dashboard+Preview" alt="Dashboard Screenshot" width="100%" />
-</div>
-
----
 
 ## ⚡ Installation & Setup
 
